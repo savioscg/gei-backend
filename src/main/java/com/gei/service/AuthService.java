@@ -38,7 +38,7 @@ public class AuthService {
         Usuario usuario = usuarioRepository.findByEmail(request.email())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        if (!passwordEncoder.matches(request.senha(), usuario.getSenha())) {
+        if (!passwordEncoder.matches(request.senha(), usuario.getPassword())) {
             throw new RuntimeException("Senha inválida");
         }
 
